@@ -76,10 +76,15 @@ public class Percolation {
 	}
 	
 	// does the system percolate?
-	// using probability to solve them, if site vacany is over 0.593, it percolates
+	// using probability to solve them, if site vacancy is over 0.593, it percolates
 	public boolean percolates()
 	{
+		if(this.numberOfOpenSites()/grid.length * grid.length >= 0.593 )
+		{
 		return true;
+		}
+		
+		return false;
 	}
 	
 	// test client (optional)
