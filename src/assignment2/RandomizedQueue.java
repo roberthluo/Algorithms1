@@ -2,7 +2,17 @@ package assignment2;
 
 import java.util.Iterator;
 
+
 public class RandomizedQueue<Item> implements Iterable<Item> {
+	
+	//Private Class Node
+	private class Node
+	{
+		Item item;
+		Node next;
+		Node previous;
+	}
+	
 	
 	public RandomizedQueue()
 	{

@@ -45,6 +45,10 @@ public class Deque<Item> implements Iterable<Item> {
 	// add the item to the front
 	public void addFirst(Item item)
 	{
+		if(item == null)
+		{
+			throw new java.lang.NullPointerException();
+		}
 		this.size++;
 		this.head.previous.item = item;
 		this.head.previous = this.head;
@@ -61,6 +65,11 @@ public class Deque<Item> implements Iterable<Item> {
 	// remove and return the item from the front
 	public Item removeFirst()
 	{
+		if(head.equals(tail))
+		{
+			throw new java.lang.UnsupportedOperationException();
+		}
+		
 		Item removedItem = this.head.item;
 		this.head = this.head.next;
 		this.size --;
@@ -71,6 +80,11 @@ public class Deque<Item> implements Iterable<Item> {
 	// remove and return the item from the end
 	public Item removeLast()
 	{
+		if(head.equals(tail))
+		{
+			throw new java.lang.UnsupportedOperationException();
+		}
+		
 		Item removedItem = this.tail.item;
 		this.tail = this.tail.previous;
 		this.size --;
@@ -95,7 +109,16 @@ public class Deque<Item> implements Iterable<Item> {
 		@Override
 		public Item next() {
 			// TODO Auto-generated method stub
+			if(hasNext())
+			{
+				throw new java.util.NoSuchElementException();
+			}
 			return current.next.item;
+		}
+		
+		public void remove()
+		{
+			throw new java.lang.UnsupportedOperationException();
 		}
 		
 	}
