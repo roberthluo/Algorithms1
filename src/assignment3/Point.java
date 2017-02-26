@@ -13,7 +13,8 @@ package assignment3;
 import java.util.Comparator;
 import edu.princeton.cs.algs4.StdDraw;
 
-public class Point implements Comparable<Point> {
+public class Point implements Comparable<Point> 
+{
 
     private final int x;     // x-coordinate of this point
     private final int y;     // y-coordinate of this point
@@ -24,7 +25,8 @@ public class Point implements Comparable<Point> {
      * @param  x the <em>x</em>-coordinate of the point
      * @param  y the <em>y</em>-coordinate of the point
      */
-    public Point(int x, int y) {
+    public Point(int x, int y) 
+    {
         /* DO NOT MODIFY */
         this.x = x;
         this.y = y;
@@ -33,7 +35,8 @@ public class Point implements Comparable<Point> {
     /**
      * Draws this point to standard draw.
      */
-    public void draw() {
+    public void draw() 
+    {
         /* DO NOT MODIFY */
         StdDraw.point(x, y);
     }
@@ -44,7 +47,8 @@ public class Point implements Comparable<Point> {
      *
      * @param that the other point
      */
-    public void drawTo(Point that) {
+    public void drawTo(Point that) 
+    {
         /* DO NOT MODIFY */
         StdDraw.line(this.x, this.y, that.x, that.y);
     }
@@ -60,9 +64,12 @@ public class Point implements Comparable<Point> {
      * @param  that the other point
      * @return the slope between this point and the specified point
      */
-    public double slopeTo(Point that) {
+    public double slopeTo(Point that) 
+    {
         /* YOUR CODE HERE */
-    	return 0;
+    	int diffX = that.x - this.x;
+    	int diffY = that.y - this.y;
+    	return diffY/diffX;
     }
 
     /**
@@ -77,10 +84,18 @@ public class Point implements Comparable<Point> {
      *         point; and a positive integer if this point is greater than the
      *         argument point
      */
-    public int compareTo(Point that) {
+    public int compareTo(Point that) 
+    {
         /* YOUR CODE HERE */
-    	
-    	return 0;
+    	if(this.x == that.x)
+    	{
+    		if(this.y == that.y)
+    		{
+    			return 0;
+    		}
+    		return this.y - that.y;
+    	}
+    	return this.x - that.x;
     }
 
     /**
@@ -89,9 +104,26 @@ public class Point implements Comparable<Point> {
      *
      * @return the Comparator that defines this ordering on points
      */
-    public Comparator<Point> slopeOrder() {
+    public Comparator<Point> slopeOrder() 
+    {
         /* YOUR CODE HERE */
-    	return null;
+    	//Strange Code, returns values from another function
+    	return new Comparator<Point>()
+    	{
+    		public int compare(Point point1, Point point2)
+    		{
+    			double slopeDifference = slopeTo(point1) - slopeTo(point2);
+    			if(slopeDifference == 0)
+    			{
+    				return 0;
+    			}
+    			else if (slopeDifference > 0)
+    			{
+    				return 1;
+    			}
+    			return -1;
+    		}
+    	};
     }
 
 
@@ -102,7 +134,8 @@ public class Point implements Comparable<Point> {
      *
      * @return a string representation of this point
      */
-    public String toString() {
+    public String toString() 
+    {
         /* DO NOT MODIFY */
         return "(" + x + ", " + y + ")";
     }
@@ -110,7 +143,8 @@ public class Point implements Comparable<Point> {
     /**
      * Unit tests the Point data type.
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         /* YOUR CODE HERE */
     }
 }
